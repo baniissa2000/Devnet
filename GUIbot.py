@@ -3,7 +3,7 @@ import time
 import re
 import tkinter as tk
 
-
+#new commit
 # standard connection test : pmnl1069 || APH connection test : VRF PNBO676 APH pnbo444
 def send_command(channel, command):
     channel.send(command + '\n')
