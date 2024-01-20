@@ -2,7 +2,7 @@ import paramiko
 import time
 import re
 import tkinter as tk
-
+import os
 #new commit
 # standard connection test : pmnl1069 || APH connection test : VRF PNBO676 APH pnbo444
 def send_command(channel, command):
@@ -84,9 +84,12 @@ else :
     routername = router_name_var
 try:
 
+    # Obtain the current username to fill the path
+
+    username = os.getlogin()
     # Main SSH session
     client = paramiko.SSHClient()
-    client.load_host_keys(r"C:\Users\Hasan.Bani_Issa\.ssh\known_hosts")
+    client.load_host_keys(f"C:\\Users\\{username}\\.ssh\known_hosts")
     client.connect('57.255.78.22', username="s_oobeid", password="Imc@n2023")
     # Connectivity test to the router
     stdin, stdout, stderr = client.exec_command(f'ping {routername}')
